@@ -1,13 +1,11 @@
 package breakthrough.s16222.pja.edu.pl;
 
-import java.util.Scanner;
 
 import breakthrough.s16222.pja.edu.pl.strategy.*;
 
 
 public class Main {
 	int roundCounter = 0;
-	static Scanner sc = new Scanner(System.in);
 	static Strategy blackPawns = null, whitePawns = new Human();
 	static String temp = "";
 
@@ -17,17 +15,16 @@ public class Main {
 		blackPawns = game.startGame();
 		while (game.endGame().equals(PawnAvaible.NONE)) {
 			game.printChessboard();
-			// ruch bialego
-			System.out.println("Ruch bialego: ");
+			System.out.println("White player move: ");
 			while (!(game.move(whitePawns, PawnAvaible.WHITE)));
 			if (!(game.endGame().equals(PawnAvaible.NONE))) {
 				break;
 			}
-			System.out.println("Ruch czarnego: ");
+			System.out.println("Black player move: ");
 
-			// ruch czarnego
+			
 			while (!(game.move(blackPawns, PawnAvaible.BLACK)));
-			// logika gry
+			
 		}
 		if (game.endGame().equals(PawnAvaible.WHITE)) {
 			System.out.println("White color wins!");
